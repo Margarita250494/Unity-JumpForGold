@@ -3,12 +3,12 @@ using UnityEngine.UI;
 
 public class Hero : MonoBehaviour
 {
-    private float speed = 6f; // Скорость движения
-    private int lives = 5; // Жизни героя
+    private float speed = 6f; 
+    private int lives = 5; 
     public Image[] hearts;
-    private float jumpForce = 15f; // Сила прыжка
+    private float jumpForce = 15f; 
     public Text goldText;
-    public int gold = 0; // Goldanzahl des Helden
+    public int gold = 0; 
     public GameObject loseScene;
     public GameObject wonScene;
     private Rigidbody2D rb;
@@ -87,7 +87,6 @@ public class Hero : MonoBehaviour
     {
         lifeAudio.Play();
         lives -= 1;
-        Debug.Log(lives);
         UpdateHearts();
 
         if (lives <= 0) GameOver();
@@ -96,7 +95,6 @@ public class Hero : MonoBehaviour
     {
         coinsAudio.Play();
         gold += amount;
-        Debug.Log("Gold collected: " + gold);
         UpdateGoldUI();
     }
     public void GameOver()

@@ -205,7 +205,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1126131657}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
@@ -472,7 +472,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1126131655}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4fe54a9713b467ca986754f159c305, type: 3}
+  m_Script: {fileID: 11500000, guid: 43f6c6e50a6ff401bbb1ded23dd83f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1166644621
@@ -558,7 +558,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1126131657}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:

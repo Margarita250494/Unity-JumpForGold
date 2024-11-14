@@ -1752,7 +1752,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 367647979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e2a917780d4241bcaf1815959b9d5c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 43f6c6e50a6ff401bbb1ded23dd83f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &371223569
@@ -4618,7 +4618,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 889957988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e2a917780d4241bcaf1815959b9d5c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 43f6c6e50a6ff401bbb1ded23dd83f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &890623827 stripped
@@ -4996,7 +4996,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 367647981}
-        m_TargetAssemblyTypeName: LoseMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
@@ -7611,7 +7611,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 889957990}
-        m_TargetAssemblyTypeName: LoseMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
@@ -8600,7 +8600,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 367647981}
-        m_TargetAssemblyTypeName: LoseMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -9064,7 +9064,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 889957990}
-        m_TargetAssemblyTypeName: LoseMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -10930,8 +10930,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d37ead3fdf4445b6a57f40373b90306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  numOfHearts: 0
   hearts:
   - {fileID: 1224536848}
   - {fileID: 654256891}
