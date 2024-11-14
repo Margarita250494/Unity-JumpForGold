@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("kjgjhfuzf");
         if(!player)
         {
             player = FindAnyObjectByType<Hero>().transform;
