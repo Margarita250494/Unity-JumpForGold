@@ -4,12 +4,18 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Hero : MonoBehaviour
 {
     private float speed = 6f; // Скорость движения
-    private int lives = 15; // Жизни героя
+    private int lives = 5; // Жизни героя
+    public float health;
+    public int numOfHearts;
+    public Image[] hearts;
     private float jumpForce = 15f; // Сила прыжка
+
+    public Text goldText;
 
     public int gold = 0; // Goldanzahl des Helden
 
@@ -77,6 +83,10 @@ public class Hero : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(health > numOfHearts)
+        {
+           lives=numOfHearts;
+        }
         CheckGround(); 
         Move();
     }
@@ -114,6 +124,7 @@ public class Hero : MonoBehaviour
     {
         lives -=1;
         Debug.Log(lives);
+        UpdateHearts();
 
         if(lives<=0)
         {
@@ -124,12 +135,38 @@ public class Hero : MonoBehaviour
     {
         gold += amount;
         Debug.Log("Gold collected: " + gold);
+        UpdateGoldUI();
     }
     public void GameOver()
     {
         // Hier kannst du die GameOver-Szene laden
         loseScene.SetActive(true);
 
+    }
+    private void UpdateHearts()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < lives)
+            {
+                hearts[i].enabled = true; // Herz anzeigen, wenn Leben vorhanden
+            }
+            else
+            {
+                hearts[i].enabled = false; // Herz ausblenden, wenn kein Leben vorhanden
+            }
+        }
+    }
+    private void UpdateGoldUI()
+    {
+        if (goldText != null)
+        {
+            goldText.text = gold.ToString();
+        }
+        else
+        {
+            Debug.LogWarning("GoldText UI element not assigned!");
+        }
     }
 }
 
