@@ -74,7 +74,7 @@
     <Compile Include="Assets/Scripts/Monster.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets/Jersey_15/OFL.txt" />
+    <None Include="Assets/Fonts/Jersey_15/OFL.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

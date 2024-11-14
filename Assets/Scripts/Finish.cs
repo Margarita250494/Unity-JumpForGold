@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Finish : MonoBehaviour
@@ -8,16 +6,16 @@ public class Finish : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Prüft, ob der kollidierte GameObject der Hero ist
         Hero hero = collision.gameObject.GetComponent<Hero>();
 
-        if (hero != null) // Überprüft, ob ein Hero-Objekt vorhanden ist
+        if (hero != null) 
         {
-            // Überprüfen, ob der Hero genug Gold gesammelt hat
             if (hero.gold >= requiredGold)
             {
+
                 Debug.Log("Gewonnen! Der Hero hat genug Gold und hat den Baum erreicht.");
                 Hero.Instance.wonScene.SetActive(true);
+                Hero.Instance.wonAudio.Play();
                 
             }
             else
