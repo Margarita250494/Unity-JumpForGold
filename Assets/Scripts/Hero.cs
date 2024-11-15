@@ -8,19 +8,19 @@ public class Hero : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator anim;
 
-    private float speed = 6f; 
-    private int initialLives = 5; 
-    private float jumpForce = 15f; 
+    private float speed = 6f;
+    private int initialLives = 5;
+    private float jumpForce = 15f;
 
     [SerializeField] private Image[] heartImages;
     [SerializeField] private Text goldTextUI;
-    
+
     [SerializeField] private GameObject loseScene;
     public GameObject wonScene;
-    
+
     private bool isGrounded = false;
 
-    public int gold = 0; 
+    public int gold = 0;
     public static Hero Instance { get; set; }
     private HeroStates State
     {
@@ -54,7 +54,7 @@ public class Hero : MonoBehaviour
         UpdateSpriteDirection(horizontalInput);
 
         if (isGrounded) State = horizontalInput != 0 ? HeroStates.run : HeroStates.idle;
-        
+
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
     }
 
@@ -75,7 +75,6 @@ public class Hero : MonoBehaviour
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         State = HeroStates.jump;
     }
-
 
     private void CheckGround()
     {
@@ -115,6 +114,27 @@ public class Hero : MonoBehaviour
     private void UpdateGoldUI()
     {
         if (goldTextUI != null) goldTextUI.text = gold.ToString();
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Определяем угол столкновения
+        foreach (ContactPoint2D contact in collision.contacts)
+        {
+            Vector2 normal = contact.normal;
+
+            // Если столкновение произошло сбоку платформы
+            if (Mathf.Abs(normal.x) > 0.5f && Mathf.Abs(normal.y) < 0.5f)
+            {
+                // Добавляем небольшой толчок от платформы
+                rb.AddForce(new Vector2(normal.x * 5f, 0), ForceMode2D.Impulse);
+            }
+
+            // Если герой приземлился сверху на платформу
+            if (normal.y > 0.5f)
+            {
+                isGrounded = true;
+            }
+        }
     }
 }
 
