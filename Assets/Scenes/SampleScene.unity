@@ -1678,6 +1678,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 365478619}
+  - component: {fileID: 365478620}
   m_Layer: 0
   m_Name: AudioSources
   m_TagString: Untagged
@@ -1705,6 +1706,23 @@ Transform:
   - {fileID: 1360998427}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &365478620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365478618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d97956cd99a3d4c75947ad7ec84fc14a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpAudio: {fileID: 619372047}
+  coinAudio: {fileID: 371223571}
+  lifeAudio: {fileID: 1926585350}
+  loseAudio: {fileID: 1007903729}
+  winAudio: {fileID: 1360998428}
 --- !u!1 &367647979
 GameObject:
   m_ObjectHideFlags: 0
@@ -10930,21 +10948,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d37ead3fdf4445b6a57f40373b90306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hearts:
+  heartImages:
   - {fileID: 1224536848}
   - {fileID: 654256891}
   - {fileID: 1363197827}
   - {fileID: 1049731093}
   - {fileID: 636055706}
-  goldText: {fileID: 621846240}
-  gold: 0
+  goldTextUI: {fileID: 621846240}
   loseScene: {fileID: 114292732}
   wonScene: {fileID: 317679892}
-  jumpAudio: {fileID: 619372047}
-  coinsAudio: {fileID: 371223571}
-  lifeAudio: {fileID: 1926585350}
-  loseAudio: {fileID: 1007903729}
-  wonAudio: {fileID: 1360998428}
+  gold: 0
 --- !u!4 &5214965649349124979 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5328615243842165718, guid: d36e3cf65f8064b66a56161a52e36eb7, type: 3}

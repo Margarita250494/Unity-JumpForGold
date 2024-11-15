@@ -15,7 +15,7 @@ public class Finish : MonoBehaviour
 
                 Debug.Log("Gewonnen! Der Hero hat genug Gold und hat den Baum erreicht.");
                 Hero.Instance.wonScene.SetActive(true);
-                Hero.Instance.wonAudio.Play();
+                AudioController.Instance.PlayWinAudio();
                 
             }
             else

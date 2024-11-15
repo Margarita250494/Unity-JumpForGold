@@ -3,32 +3,34 @@ using UnityEngine.UI;
 
 public class Hero : MonoBehaviour
 {
-    private float speed = 6f; 
-    private int lives = 5; 
-    public Image[] hearts;
-    private float jumpForce = 15f; 
-    public Text goldText;
-    public int gold = 0; 
-    public GameObject loseScene;
-    public GameObject wonScene;
+
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
-    private bool isGrounded = false;
     private Animator anim;
 
-    public AudioSource jumpAudio, coinsAudio, lifeAudio, loseAudio, wonAudio;
+    private float speed = 6f; 
+    private int initialLives = 5; 
+    private float jumpForce = 15f; 
 
+    [SerializeField] private Image[] heartImages;
+    [SerializeField] private Text goldTextUI;
+    
+    [SerializeField] private GameObject loseScene;
+    public GameObject wonScene;
+    
+    private bool isGrounded = false;
+
+    public int gold = 0; 
     public static Hero Instance { get; set; }
-    private States State
+    private HeroStates State
     {
-        get { return (States)anim.GetInteger("state"); }
+        get { return (HeroStates)anim.GetInteger("state"); }
         set { anim.SetInteger("state", (int)value); }
     }
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
-
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
@@ -36,24 +38,24 @@ public class Hero : MonoBehaviour
 
     private void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        UpdateSpriteDirection(horizontalInput);
-
-        if (isGrounded)
-        {
-            State = horizontalInput != 0 ? States.run : States.idle;
-        }
-
-        if (isGrounded && Input.GetButtonDown("Jump")) Jump();
-
+        HandleInput();
         if (transform.position.y < -200) GameOver();
-
     }
 
     private void FixedUpdate()
     {
         CheckGround();
         Move();
+    }
+
+    private void HandleInput()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        UpdateSpriteDirection(horizontalInput);
+
+        if (isGrounded) State = horizontalInput != 0 ? HeroStates.run : HeroStates.idle;
+        
+        if (isGrounded && Input.GetButtonDown("Jump")) Jump();
     }
 
     private void Move()
@@ -69,9 +71,9 @@ public class Hero : MonoBehaviour
 
     private void Jump()
     {
-        jumpAudio.Play();
+        AudioController.Instance.PlayJumpAudio();
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        State = States.jump;
+        State = HeroStates.jump;
     }
 
 
@@ -80,43 +82,43 @@ public class Hero : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + Vector3.down * 0.5f, 0.3f);
         isGrounded = colliders.Length > 1;
 
-        if (!isGrounded) State = States.jump;
+        if (!isGrounded) State = HeroStates.jump;
     }
 
     public void GetDamage()
     {
-        lifeAudio.Play();
-        lives -= 1;
+        AudioController.Instance.PlayLifeAudio();
+        initialLives -= 1;
         UpdateHearts();
 
-        if (lives <= 0) GameOver();
+        if (initialLives <= 0) GameOver();
     }
     public void AddGold(int amount)
     {
-        coinsAudio.Play();
+        AudioController.Instance.PlayCoinAudio();
         gold += amount;
         UpdateGoldUI();
     }
     public void GameOver()
     {
-        loseAudio.Play();
+        AudioController.Instance.PlayLoseAudio();
         loseScene.SetActive(true);
         Destroy(gameObject);
     }
     private void UpdateHearts()
     {
-        for (int i = 0; i < hearts.Length; i++)
+        for (int i = 0; i < heartImages.Length; i++)
         {
-            hearts[i].enabled = (i < lives);
+            heartImages[i].enabled = (i < initialLives);
         }
     }
     private void UpdateGoldUI()
     {
-        if (goldText != null) goldText.text = gold.ToString();
+        if (goldTextUI != null) goldTextUI.text = gold.ToString();
     }
 }
 
-public enum States
+public enum HeroStates
 {
     idle,
     run,

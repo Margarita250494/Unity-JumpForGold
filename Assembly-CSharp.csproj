@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets/Scripts/Finish.cs" />
     <Compile Include="Assets/Scripts/Hero.cs" />
+    <Compile Include="Assets/Scripts/AudioController.cs" />
     <Compile Include="Assets/Scripts/Menu.cs" />
     <Compile Include="Assets/Scripts/Enemies.cs" />
     <Compile Include="Assets/Scripts/Gold.cs" />

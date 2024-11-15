@@ -13,17 +13,15 @@ public class Monster : MonoBehaviour
         set { anim.SetInteger("state", (int)value); }
     }
 
-    private void Start()
+    private void Awake()
     {
-        dir = transform.right;
         sprite = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        Move();
-    }
+    private void Start() => dir = transform.right;
+
+    private void Update() => Move();
 
     private void Move()
     {
@@ -37,16 +35,11 @@ public class Monster : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, speed * Time.deltaTime);
 
-        if (dir.x != 0)
-        {
-            State = (dir.x != 0) ? MonsterStates.run : MonsterStates.idle;
-        }
+        if (dir.x != 0)State = (dir.x != 0) ? MonsterStates.run : MonsterStates.idle;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
         if (Hero.Instance != null && collision.gameObject == Hero.Instance.gameObject) Hero.Instance.GetDamage();
-
     }
 }
 

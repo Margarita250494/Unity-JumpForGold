@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Gold : MonoBehaviour
@@ -9,7 +7,6 @@ public class Gold : MonoBehaviour
     if (collision.gameObject == Hero.Instance.gameObject) 
     {
         Hero.Instance.AddGold(1);
-        Debug.Log("Match");
         Destroy(gameObject);
     }
 
