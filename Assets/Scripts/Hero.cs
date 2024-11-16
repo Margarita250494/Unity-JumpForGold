@@ -117,23 +117,16 @@ public class Hero : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Определяем угол столкновения
         foreach (ContactPoint2D contact in collision.contacts)
         {
             Vector2 normal = contact.normal;
-
-            // Если столкновение произошло сбоку платформы
             if (Mathf.Abs(normal.x) > 0.5f && Mathf.Abs(normal.y) < 0.5f)
             {
-                // Добавляем небольшой толчок от платформы
                 rb.AddForce(new Vector2(normal.x * 5f, 0), ForceMode2D.Impulse);
             }
 
-            // Если герой приземлился сверху на платформу
-            if (normal.y > 0.5f)
-            {
-                isGrounded = true;
-            }
+            
+            if (normal.y > 0.5f) isGrounded = true;
         }
     }
 }
