@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Finish : MonoBehaviour
 {
-    public int requiredGold = 20;
+    [HideInInspector] public int requiredGold = 20;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
